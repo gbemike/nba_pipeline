@@ -1,0 +1,26 @@
+nba_pipeline:
+  outputs:
+    dev:
+      dataset: nba_data
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: /home/gbemike/Documents/nba_pipeline/gcp_key.json
+      location: US
+      method: service-account
+      priority: interactive
+      project: dezoomcamp-411023
+      threads: 4
+      type: bigquery
+  target: dev
+taxi_data_nyc:
+  outputs:
+    dev:
+      dbname: taxi_data
+      host: localhost
+      pass: root
+      port: 5432
+      schema: dbt_gbemike
+      threads: 4
+      type: postgres
+      user: postgres
+  target: dev
