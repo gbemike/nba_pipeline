@@ -6,7 +6,12 @@ with source as (
 
 renamed as (
     select
-        player_name
+        player_name,
+
+        -- stats
+        
+
+
     from source
 )
 

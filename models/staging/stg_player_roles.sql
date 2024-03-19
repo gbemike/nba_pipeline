@@ -6,7 +6,13 @@ with source as (
 
 renamed as (
     select
-        player_roles
+        -- identifiers
+        player_name,
+
+        -- player roles
+        offensive_role,
+        defensive_role
+        
     from source
 )
 

@@ -6,7 +6,17 @@ with source as (
 
 renamed as (
     select
-        player_bio
+        -- identifiers
+        player_name
+
+        -- player info
+        {{ convert_height_to_cm('height') }} as height_cm,
+        cast(age as numeric) as age,
+        cast(weight as numeric) as weight,
+        positional_size,
+        {{ convert_height_to_cm('wingspan') }} as wingspan_cm,
+        origin
+
     from source
 )
 

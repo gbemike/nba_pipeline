@@ -1,0 +1,30 @@
+[32m2024-03-19 15:32:59 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - a43096c5-31eb-4c62-a557-f6b6abdcfd86 - 814565 - LOGS_CAPTURED - Started capturing logs in process (pid: 814565).
+[32m2024-03-19 15:32:59 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - a43096c5-31eb-4c62-a557-f6b6abdcfd86 - 814565 - nba_pipeline_dbt_assets - STEP_START - Started execution of step "nba_pipeline_dbt_assets".
+[32m2024-03-19 15:32:59 +0000[0m - dagster - [34mINFO[0m - __ASSET_JOB - a43096c5-31eb-4c62-a557-f6b6abdcfd86 - nba_pipeline_dbt_assets - A dbt subsetted execution is not being performed. Using the default dbt selection arguments `['--select', 'fqn:*']`.
+[32m2024-03-19 15:32:59 +0000[0m - dagster - [34mINFO[0m - __ASSET_JOB - a43096c5-31eb-4c62-a557-f6b6abdcfd86 - nba_pipeline_dbt_assets - Copying `/home/gbemike/Documents/github/nba_pipeline/target/partial_parse.msgpack` to `/home/gbemike/Documents/github/nba_pipeline/target/nba_pipeline_dbt_assets-a43096c-0d23a65/partial_parse.msgpack` to take advantage of partial parsing.
+[32m2024-03-19 15:32:59 +0000[0m - dagster - [34mINFO[0m - __ASSET_JOB - a43096c5-31eb-4c62-a557-f6b6abdcfd86 - nba_pipeline_dbt_assets - Running dbt command: `dbt build --select fqn:*`.
+Exception ignored in: <generator object DbtCliInvocation.stream_raw_events at 0x7f84c85dee80>
+Traceback (most recent call last):
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster_dbt/core/resources_v2.py", line 453, in stream
+    yield from event.to_default_asset_events(
+RuntimeError: generator ignored GeneratorExit
+[32m2024-03-19 15:33:06 +0000[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - a43096c5-31eb-4c62-a557-f6b6abdcfd86 - 814565 - nba_pipeline_dbt_assets - STEP_FAILURE - Execution of step "nba_pipeline_dbt_assets" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "nba_pipeline_dbt_assets"::
+
+KeyError: 'model.nba_pipeline.stg_player_stats'
+
+Stack Trace:
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/utils.py", line 54, in op_execution_error_boundary
+    yield
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_utils/__init__.py", line 463, in iterate_with_context
+    next_output = next(iterator)
+                  ^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/nba_pipeline_dagster/nba_pipeline_dagster/assets.py", line 22, in nba_pipeline_dbt_assets
+    yield from dbt.cli(["build"], context=context).stream()
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster_dbt/core/resources_v2.py", line 453, in stream
+    yield from event.to_default_asset_events(
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster_dbt/core/resources_v2.py", line 152, in to_default_asset_events
+    dbt_resource_props = manifest["nodes"][unique_id]
+                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+[0m

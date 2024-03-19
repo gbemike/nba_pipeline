@@ -1,0 +1,15 @@
+Running with dbt=1.7.10
+Registered adapter: bigquery=1.7.6
+[[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.nba_pipeline.example
+Found 4 models, 4 sources, 0 exposures, 0 metrics, 454 macros, 0 groups, 0 semantic models
+
+Concurrency: 4 threads (target='dev')
+
+1 of 4 START sql view model nba_data.stg_player_bio ............................ [RUN]
+2 of 4 START sql view model nba_data.stg_player_names .......................... [RUN]
+3 of 4 START sql view model nba_data.stg_player_roles .......................... [RUN]
+4 of 4 START sql view model nba_data.stg_player_stats .......................... [RUN]
+4 of 4 OK created sql view model nba_data.stg_player_stats ..................... [[32mCREATE VIEW (0 processed)[0m in 2.08s]
+{"data": {"node_info": {"materialized": "view", "meta": {}, "node_finished_at": "2024-03-19T15:33:06.443239", "node_name": "stg_player_stats", "node_path": "staging/stg_player_stats.sql", "node_relation": {"alias": "stg_player_stats", "database": "dezoomcamp-411023", "relation_name": "`dezoomcamp-411023`.`nba_data`.`stg_player_stats`", "schema": "nba_data"}, "node_started_at": "2024-03-19T15:33:04.356384", "node_status": "success", "resource_type": "model", "unique_id": "model.nba_pipeline.stg_player_stats"}, "run_result": {"adapter_response": {"_message": "CREATE VIEW (0 processed)", "bytes_billed": 0.0, "bytes_processed": 0.0, "code": "CREATE VIEW", "job_id": "29d6d7d3-cf0a-4c2a-a039-233e0be02734", "location": "US", "project_id": "dezoomcamp-411023", "slot_ms": 0.0}, "execution_time": 2.0817301, "message": "CREATE VIEW (0 processed)", "num_failures": 0, "status": "success", "thread": "Thread-4 (worker)", "timing_info": [{"completed_at": "2024-03-19T15:33:04.376910Z", "name": "compile", "started_at": "2024-03-19T15:33:04.373459Z"}, {"completed_at": "2024-03-19T15:33:06.442515Z", "name": "execute", "started_at": "2024-03-19T15:33:04.398013Z"}]}}, "info": {"category": "", "code": "Q025", "extra": {}, "invocation_id": "22e3281a-b6ee-4c74-88d9-c90d577bcc28", "level": "debug", "msg": "Finished running node model.nba_pipeline.stg_player_stats", "name": "NodeFinished", "pid": 814794, "thread": "Thread-4 (worker)", "ts": "2024-03-19T15:33:06.444024Z"}}
