@@ -207,6 +207,5 @@ def player_stats(context: AssetExecutionContext) -> pd.DataFrame:
 
     df.drop(['_value', '_percentile'],inplace=True, axis=1)
 
-    df.to_csv('data/raw/player_stats.csv')
-
+    df.to_csv('data/raw/player_stats.csv') 
     return df
