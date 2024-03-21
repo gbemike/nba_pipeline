@@ -180,7 +180,7 @@ def player_stats(context: AssetExecutionContext) -> pd.DataFrame:
                     # validates if the table header and table data exists
                     if th_element and len(td_elements) == 3:
                         # get stat_name
-                        stat_name = th_element.text.rstrip('%')
+                        stat_name = th_element.text.strip('')
                         # get corresponding stat values
                         # Assuming `stat_value` is your dictionary
                         stat_value = td_elements[0].text.strip()
