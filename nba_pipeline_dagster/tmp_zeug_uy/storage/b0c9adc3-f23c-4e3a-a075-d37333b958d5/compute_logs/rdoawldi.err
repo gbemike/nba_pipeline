@@ -1,0 +1,6 @@
+[32m2024-03-23 21:11:29 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b0c9adc3-f23c-4e3a-a075-d37333b958d5 - 1220588 - LOGS_CAPTURED - Started capturing logs in process (pid: 1220588).
+[32m2024-03-23 21:11:29 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b0c9adc3-f23c-4e3a-a075-d37333b958d5 - 1220588 - player_names - STEP_START - Started execution of step "player_names".
+[32m2024-03-23 21:13:32 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b0c9adc3-f23c-4e3a-a075-d37333b958d5 - 1220588 - player_names - STEP_OUTPUT - Yielded output "result" of type "DataFrame". (Type check passed).
+[32m2024-03-23 21:13:44 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b0c9adc3-f23c-4e3a-a075-d37333b958d5 - 1220588 - player_names - ASSET_MATERIALIZATION - Materialized value player_names.
+[32m2024-03-23 21:13:44 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b0c9adc3-f23c-4e3a-a075-d37333b958d5 - 1220588 - player_names - HANDLED_OUTPUT - Handled output "result" using IO manager "bigquery_io_manager"
+[32m2024-03-23 21:13:44 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b0c9adc3-f23c-4e3a-a075-d37333b958d5 - 1220588 - player_names - STEP_SUCCESS - Finished execution of step "player_names" in 2m15s.

@@ -9,7 +9,7 @@ nba_pipeline:
       method: service-account
       priority: interactive
       project: dezoomcamp-411023
-      threads: 4
+      threads: 2
       type: bigquery
   target: dev
 taxi_data_nyc:

@@ -10,12 +10,12 @@ sources:
       - name: player_bio
         meta:
           dagster:
-          asset_key: ["player_bio"]
+            asset_key: ["player_bio"]
       - name: player_roles
         meta:
           dagster:
-          asset_key: ["player_roles"]
+            asset_key: ["player_roles"]
       - name: player_stats
         meta:
           dagster:
-          asset_key: ["player_stats"]
+            asset_key: ["player_stats"]

@@ -1,0 +1,22 @@
+Running with dbt=1.7.10
+Registered adapter: bigquery=1.7.6
+[[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.nba_pipeline.example
+Found 5 models, 4 sources, 0 exposures, 0 metrics, 591 macros, 0 groups, 0 semantic models
+
+Concurrency: 2 threads (target='dev')
+
+1 of 1 START sql view model nba_data.stg_player_stats .......................... [RUN]
+BigQuery adapter: https://console.cloud.google.com/bigquery?project=dezoomcamp-411023&j=bq:US:955b20bd-e0db-4dc5-9fd6-68413064dda1&page=queryresults
+1 of 1 ERROR creating sql view model nba_data.stg_player_stats ................. [[31mERROR[0m in 2.92s]
+
+Finished running 1 view model in 0 hours 0 minutes and 6.47 seconds (6.47s).
+
+[31mCompleted with 1 error and 0 warnings:[0m
+
+  Database Error in model stg_player_stats (models/staging/stg_player_stats.sql)
+  Syntax error: Missing whitespace between literal and alias at [23:20]
+  compiled Code at target/nba_pipeline_dbt_assets-081c6cc-cd9ba23/run/nba_pipeline/models/staging/stg_player_stats.sql
+
+Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1

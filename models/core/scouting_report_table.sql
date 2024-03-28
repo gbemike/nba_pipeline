@@ -12,7 +12,7 @@ player_roles as (
     select * from {{ ref('stg_player_roles') }}
 ),
 
-player_stats as (
+ps as (
     select * from {{ ref('stg_player_stats') }}
 ),
 
@@ -21,57 +21,66 @@ player_stats as (
 scouting_report as (
     select
         -- player names
-        player_names.player_name,
+        pn.player_name,
 
         -- player_bio
-        player_bio.height_cm,
-        player_bio.age,
-        player_bio.weight,
-        player_bio.wingspan_cm,
-        player_bio.origin,
+        pb.height_cm,
+        pb.age,
+        pb.weight_lb,
+        pb.wingspan_cm,
+        pb.origin,
 
         -- player_roles
-        player_roles.offensive_role,
-        player_roles.defensive_role,
-        player_stats.ts_value,
-        player_stats.ts_percentile,
-        player_stats.sq_value,
-        player_stats.sq_percentile,
-        player_stats.ftr_value,
-        player_stats.ftr_percentile,
-        player_stats.3par_value,
-        player_stats.3par_percentile,
-        player_stats.orb_value,
-        player_stats.orb_percentile,
-        player_stats.ctov_value,
-        player_stats.ctov_percentile,
-        player_stats.load_value,
-        player_stats.load_percentile,
-        player_stats.creation_value,
-        player_stats.creation_percentile,
-        player_stats.portability_value,
-        player_stats.portability_percentile,
-        player_stats.passer_rating,
-        player_stats.craftedopm_value,
-        player_stats.craftedopm_percentile,
-        player_stats.deflections_value,
-        player_stats.deflections_percentile,
-        player_stats.radtov_value,
-        player_stats.radtov_percentile,
-        player_stats.drb_value,
-        player_stats.drb_percentile,
-        player_stats.rim_defense_value,
-        player_stats.rim_defense_percentile,
-        player_stats.blkpct_value,
-        player_stats.blkpct_percentile,
-        player_stats.versatility_value,
-        player_stats.versatility_percentile,
-        player_stats.rpf_value,
-        player_stats.rpf_percentile,
-        player_stats.crafteddpm_value,
-        player_stats.crafteddpm_percentile
+        pr.offensive_role,
+        pr.defensive_role,
 
-    from player_names
-    inner join scouting_report
-    on player_names.player_name = scouting_report.player_name
+        -- player stats
+        ps.ts_value,
+        ps.ts_percentile,
+        ps.sq_value,
+        ps.sq_percentile,
+        ps.ftr_value,
+        ps.ftr_percentile,
+        ps.three_par_value,
+        ps.three_par_percentile,
+        ps.orb_value,
+        ps.orb_percentile,
+        ps.ctov_value,
+        ps.ctov_percentile,
+        ps.load_value,
+        ps.load_percentile,
+        ps.creation_value,
+        ps.creation_percentile,
+        ps.portability_value,
+        ps.portability_percentile,
+        ps.passer_rating_value,
+        ps.craftedopm_value,
+        ps.craftedopm_percentile,
+        ps.deflections_value,
+        ps.deflections_percentile,
+        ps.radtov_value,
+        ps.radtov_percentile,
+        ps.drb_value,
+        ps.drb_percentile,
+        ps.rim_defense_value,
+        ps.rim_defense_percentile,
+        ps.blkpct_value,
+        ps.blkpct_percentile,
+        ps.versatility_value,
+        ps.versatility_percentile,
+        ps.rpf_value,
+        ps.rpf_percentile,
+        ps.crafteddpm_value,
+        ps.crafteddpm_percentile
+
+    from
+        player_names as pn
+        inner join player_bio as pb 
+        on pn.player_name = pb.player_name
+        inner join player_roles as pr 
+        on pn.player_name = pr.player_name
+        inner join ps as ps 
+        on pn.player_name = ps.player_name
 )
+
+select * from scouting_report

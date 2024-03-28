@@ -1,0 +1,13 @@
+beautifulsoup4==4.12.3
+dagster==1.6.2
+dagster==1.6.11
+dagster_dbt==0.22.2
+dagster_dbt==0.22.11
+dagster_gcp==0.22.11
+dagster_gcp_pandas==0.22.11
+pandas==2.2.1
+protobuf==5.26.0
+Requests==2.31.0
+setuptools==68.0.0
+setuptools==44.0.0+3acb925dd708430aeaf197ea53ac8a752f7c1863
+setuptools==69.1.1

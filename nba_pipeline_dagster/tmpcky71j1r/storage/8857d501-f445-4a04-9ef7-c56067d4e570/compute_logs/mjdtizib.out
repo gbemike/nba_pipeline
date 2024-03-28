@@ -1,0 +1,34 @@
+Running with dbt=1.7.10
+Registered adapter: bigquery=1.7.6
+[[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.nba_pipeline.example
+Found 5 models, 4 sources, 0 exposures, 0 metrics, 591 macros, 0 groups, 0 semantic models
+
+Concurrency: 2 threads (target='dev')
+
+1 of 5 START sql view model nba_data.stg_player_bio ............................ [RUN]
+2 of 5 START sql view model nba_data.stg_player_names .......................... [RUN]
+2 of 5 OK created sql view model nba_data.stg_player_names ..................... [[32mCREATE VIEW (0 processed)[0m in 2.15s]
+3 of 5 START sql view model nba_data.stg_player_roles .......................... [RUN]
+BigQuery adapter: https://console.cloud.google.com/bigquery?project=dezoomcamp-411023&j=bq:US:4cd61b11-9998-4b05-86db-dc50e50d269a&page=queryresults
+1 of 5 ERROR creating sql view model nba_data.stg_player_bio ................... [[31mERROR[0m in 2.67s]
+4 of 5 START sql view model nba_data.stg_player_stats .......................... [RUN]
+3 of 5 OK created sql view model nba_data.stg_player_roles ..................... [[32mCREATE VIEW (0 processed)[0m in 2.85s]
+BigQuery adapter: https://console.cloud.google.com/bigquery?project=dezoomcamp-411023&j=bq:US:e898bfb2-e8ac-442a-8fad-e5f9b0dacb98&page=queryresults
+4 of 5 ERROR creating sql view model nba_data.stg_player_stats ................. [[31mERROR[0m in 3.77s]
+5 of 5 SKIP relation nba_data.scouting_report_table ............................ [[33mSKIP[0m]
+
+Finished running 4 view models, 1 table model in 0 hours 0 minutes and 9.42 seconds (9.42s).
+
+[31mCompleted with 2 errors and 0 warnings:[0m
+
+  Database Error in model stg_player_bio (models/staging/stg_player_bio.sql)
+  Syntax error: Expected ")" but got keyword AS at [21:93]
+  compiled Code at target/nba_pipeline_dbt_assets-8857d50-441e783/run/nba_pipeline/models/staging/stg_player_bio.sql
+
+  Database Error in model stg_player_stats (models/staging/stg_player_stats.sql)
+  Syntax error: Missing whitespace between literal and alias at [36:16]
+  compiled Code at target/nba_pipeline_dbt_assets-8857d50-441e783/run/nba_pipeline/models/staging/stg_player_stats.sql
+
+Done. PASS=2 WARN=0 ERROR=2 SKIP=1 TOTAL=5

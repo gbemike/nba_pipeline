@@ -1,0 +1,22 @@
+Running with dbt=1.7.10
+Registered adapter: bigquery=1.7.6
+[[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.nba_pipeline.example
+Found 5 models, 4 sources, 0 exposures, 0 metrics, 591 macros, 0 groups, 0 semantic models
+
+Concurrency: 2 threads (target='dev')
+
+1 of 1 START sql table model nba_data.scouting_report_table .................... [RUN]
+BigQuery adapter: https://console.cloud.google.com/bigquery?project=dezoomcamp-411023&j=bq:US:9ce3260a-c72a-4692-9621-01955dad2a46&page=queryresults
+1 of 1 ERROR creating sql table model nba_data.scouting_report_table ........... [[31mERROR[0m in 6.44s]
+
+Finished running 1 table model in 0 hours 0 minutes and 10.72 seconds (10.72s).
+
+[31mCompleted with 1 error and 0 warnings:[0m
+
+  Database Error in model scouting_report_table (models/core/scouting_report_table.sql)
+  Unrecognized name: player_names; Did you mean player_name? at [36:9]
+  compiled Code at target/nba_pipeline_dbt_assets-ab5401f-63cf4f1/run/nba_pipeline/models/core/scouting_report_table.sql
+
+Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1

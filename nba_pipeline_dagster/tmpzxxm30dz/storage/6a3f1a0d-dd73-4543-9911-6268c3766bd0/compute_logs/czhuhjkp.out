@@ -1,0 +1,22 @@
+Running with dbt=1.7.10
+Registered adapter: bigquery=1.7.6
+[[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.nba_pipeline.example
+Found 5 models, 4 sources, 0 exposures, 0 metrics, 591 macros, 0 groups, 0 semantic models
+
+Concurrency: 2 threads (target='dev')
+
+1 of 1 START sql view model nba_data.stg_player_bio ............................ [RUN]
+BigQuery adapter: https://console.cloud.google.com/bigquery?project=dezoomcamp-411023&j=bq:US:ef6f2e28-4d85-4231-9eb1-fbcbac89a889&page=queryresults
+1 of 1 ERROR creating sql view model nba_data.stg_player_bio ................... [[31mERROR[0m in 2.47s]
+
+Finished running 1 view model in 0 hours 0 minutes and 7.44 seconds (7.44s).
+
+[31mCompleted with 1 error and 0 warnings:[0m
+
+  Database Error in model stg_player_bio (models/staging/stg_player_bio.sql)
+  Syntax error: Expected ")" but got keyword WITH at [21:5]
+  compiled Code at target/nba_pipeline_dbt_assets-6a3f1a0-d83b321/run/nba_pipeline/models/staging/stg_player_bio.sql
+
+Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1

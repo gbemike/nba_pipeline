@@ -1,0 +1,6 @@
+[32m2024-03-27 19:28:54 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - bea87050-f355-45b0-9f17-03d018044c6c - 26094 - LOGS_CAPTURED - Started capturing logs in process (pid: 26094).
+[32m2024-03-27 19:28:54 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - bea87050-f355-45b0-9f17-03d018044c6c - 26094 - player_roles - STEP_START - Started execution of step "player_roles".
+[32m2024-03-27 19:29:01 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - bea87050-f355-45b0-9f17-03d018044c6c - 26094 - player_roles - STEP_OUTPUT - Yielded output "result" of type "DataFrame". (Type check passed).
+[32m2024-03-27 19:29:10 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - bea87050-f355-45b0-9f17-03d018044c6c - 26094 - player_roles - ASSET_MATERIALIZATION - Materialized value player_roles.
+[32m2024-03-27 19:29:10 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - bea87050-f355-45b0-9f17-03d018044c6c - 26094 - player_roles - HANDLED_OUTPUT - Handled output "result" using IO manager "bigquery_io_manager"
+[32m2024-03-27 19:29:10 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - bea87050-f355-45b0-9f17-03d018044c6c - 26094 - player_roles - STEP_SUCCESS - Finished execution of step "player_roles" in 15.91s.

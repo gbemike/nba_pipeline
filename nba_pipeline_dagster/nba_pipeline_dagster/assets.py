@@ -16,7 +16,6 @@ import csv
 
 from .constants import dbt_manifest_path
 
-
 @dbt_assets(manifest=dbt_manifest_path)
 def nba_pipeline_dbt_assets(context: AssetExecutionContext, dbt: DbtCliResource):
     yield from dbt.cli(["build"], context=context).stream()
@@ -56,8 +55,8 @@ def player_bio(context:AssetExecutionContext) -> pd.DataFrame:
     Get Player Bio
     """
     player_names_df = pd.read_csv('data/raw/player_names.csv')
-    player_names = player_names_df['player_name'].tolist()
-    # player_names = ['austin-reaves']
+    # player_names = player_names_df['player_name'].tolist()
+    player_names = ['austin-reaves']
 
     player_bio = []
 
@@ -96,6 +95,8 @@ def player_bio(context:AssetExecutionContext) -> pd.DataFrame:
     df.columns = df.columns.str.replace(' ','_')
     df.columns = df.columns.str.lower()
 
+    df.columns = df.columns.str.replace('weight', 'weight_lb')
+
     df.to_csv('data/raw/player_bio.csv', index=False)
 
     return df
@@ -106,8 +107,8 @@ def player_roles(context: AssetExecutionContext) -> pd.DataFrame:
     Get players positional role
     """
     player_names_df = pd.read_csv('data/raw/player_names.csv')
-    player_names = player_names_df['player_name'].tolist()
-    # player_names = ['austin-reaves']
+    # player_names = player_names_df['player_name'].tolist()
+    player_names = ['austin-reaves']
 
     player_roles = []
 
@@ -151,8 +152,8 @@ def player_stats(context: AssetExecutionContext) -> pd.DataFrame:
     Get players scouting report stats
     """
     player_names_df = pd.read_csv('data/raw/player_names.csv')
-    player_names = player_names_df['player_name'].tolist()
-    # player_names = ['austin-reaves']
+    # player_names = player_names_df['player_name'].tolist()
+    player_names = ['austin-reaves']
 
     player_stats = []
 
@@ -201,7 +202,10 @@ def player_stats(context: AssetExecutionContext) -> pd.DataFrame:
     # preprocessing
     df.columns = df.columns.str.replace(':','')
     df.columns = df.columns.str.replace(' ','_')
-    #df.columns = df.columns.str.replace('%','')
+    df.columns = df.columns.str.replace('%','')
+    df.columns = df.columns.str.replace('3par_value', 'three_par_value', case=False)
+    df.columns = df.columns.str.replace('3par_percentile', 'three_par_percentile', case=False)
+
     df.columns = df.columns.str.lower()
     #df['col'] = df['col'].str.rstrip('%').astype('float') / 100.0
 
