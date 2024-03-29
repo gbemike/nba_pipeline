@@ -9,6 +9,4 @@
     ROUND((cast(SPLIT({{ height }}, "'")[OFFSET(0)] as decimal) * 30.48) +
     (cast(SPLIT(SPLIT({{ height }}, "'")[OFFSET(1)], '"')[OFFSET(0)] as decimal) * 2.54))
 
-
-
 {%- endmacro %}

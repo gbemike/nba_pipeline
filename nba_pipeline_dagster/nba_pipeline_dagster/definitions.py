@@ -22,10 +22,12 @@ from .assets import (
 
 from .constants import dbt_project_dir
 from .schedules import schedules
+from .jobs import jobs
 
 defs = Definitions(
     assets=[nba_pipeline_dbt_assets, player_names, player_bio, player_roles, player_stats],
     schedules=schedules,
+    jobs=jobs,
     resources={
         "dbt": DbtCliResource(project_dir=os.fspath(dbt_project_dir)),
         "bigquery_io_manager": BigQueryPandasIOManager(

@@ -1,0 +1,25 @@
+Running with dbt=1.7.10
+Registered adapter: bigquery=1.7.6
+[[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.nba_pipeline.example
+Found 5 models, 4 sources, 0 exposures, 0 metrics, 592 macros, 0 groups, 0 semantic models
+
+Concurrency: 2 threads (target='dev')
+
+1 of 5 START sql table model nba_data.stg_player_bio ........................... [RUN]
+2 of 5 START sql view model nba_data.stg_player_names .......................... [RUN]
+2 of 5 OK created sql view model nba_data.stg_player_names ..................... [[32mCREATE VIEW (0 processed)[0m in 2.31s]
+3 of 5 START sql view model nba_data.stg_player_roles .......................... [RUN]
+1 of 5 OK created sql table model nba_data.stg_player_bio ...................... [[32mCREATE TABLE (465.0 rows, 26.9 KiB processed)[0m in 3.98s]
+4 of 5 START sql view model nba_data.stg_player_stats .......................... [RUN]
+3 of 5 OK created sql view model nba_data.stg_player_roles ..................... [[32mCREATE VIEW (0 processed)[0m in 2.07s]
+4 of 5 OK created sql view model nba_data.stg_player_stats ..................... [[32mCREATE VIEW (0 processed)[0m in 2.55s]
+5 of 5 START sql table model nba_data.scouting_report_table .................... [RUN]
+5 of 5 OK created sql table model nba_data.scouting_report_table ............... [[32mCREATE TABLE (432.0 rows, 146.8 KiB processed)[0m in 4.80s]
+
+Finished running 3 view models, 2 table models in 0 hours 0 minutes and 14.71 seconds (14.71s).
+
+[32mCompleted successfully[0m
+
+Done. PASS=5 WARN=0 ERROR=0 SKIP=0 TOTAL=5

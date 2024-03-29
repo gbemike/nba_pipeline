@@ -1,0 +1,2 @@
+[32m2024-03-28 19:07:37 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 28036259-cf1e-4e7f-a83f-5b08a02efc31 - 1508777 - LOGS_CAPTURED - Started capturing logs in process (pid: 1508777).
+[32m2024-03-28 19:07:37 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 28036259-cf1e-4e7f-a83f-5b08a02efc31 - 1508777 - player_bio - STEP_START - Started execution of step "player_bio".
