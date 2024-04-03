@@ -11,7 +11,7 @@ Dagter is responsible for the execution of the python scraping modules. The asse
 
 - The first asset, `player_names`, scrapes player names and headshots from the Crafted NBA website. Player names are transformed into a DataFrame and stored in a CSV file for further processing. The headshot URLs are also extracted and stored along with the player names.
 
-![player_names asset](/home/gbemike/Documents/github/nba_pipeline/images/player_names_asset.png)
+![player_names asset](images/player_names_asset.png)
 
 - The `player_bio` task fetches player bio data such as height and age from the website. It iterates through player names, constructs URLs for each player, sends HTTP requests to retrieve player data, and extracts relevant information using BeautifulSoup. The extracted data is then formatted into a DataFrame.
 - `player_roles` task retrieves players' positional roles from the website. Similar to `player_bio`, it iterates through player names, constructs URLs, and extracts role information using BeautifulSoup. The extracted data is stored in a DataFrame.
