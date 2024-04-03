@@ -31,8 +31,8 @@ defs = Definitions(
     resources={
         "dbt": DbtCliResource(project_dir=os.fspath(dbt_project_dir)),
         "bigquery_io_manager": BigQueryPandasIOManager(
-            project="dezoomcamp-411023",
-            location="us",
+            project=EnvVar("PROJECT_ID"),
+            location=EnvVar("LOCATION"),
             dataset="nba_data",
             gcp_credentials=EnvVar("GCP_CREDENTIALS"),
             timeout=15.0
