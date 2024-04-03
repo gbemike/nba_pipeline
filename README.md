@@ -14,7 +14,7 @@ Dagter is responsible for the execution of the python scraping modules. The asse
 - `player_roles` task retrieves players' positional roles from the website. Similar to `player_bio`, it iterates through player names, constructs URLs, and extracts role information using BeautifulSoup. The extracted data is stored in a DataFrame.
 - The `player_stats` task collects scouting report stats for players. It follows a similar process of iterating through player names, constructing URLs, and extracting stats data using BeautifulSoup. The extracted data is stored in a DataFrame.
 
-[Asset Lineage](images/dagster_assets_display.png)
+![Asset Lineage](images/dagster_assets_display.png)
 
 ## Data Transformation
 
