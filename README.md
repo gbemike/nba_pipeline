@@ -1,4 +1,4 @@
 Welcome to your new dbt project!
 
 ### NBA Data Pipeline
-Welcome to the Crafted NBA Data Pipeline project! 🏀 This is where data engineering meets the world of basketball, all thanks to the magic of Dagster and dbt. Ever wondered how NBA player data gets from the web to your fingertips? Well, wonder no more! Our project takes you on a journey behind the scenes, where we scrape, transform, and load NBA player data from the [crafted NBA website](https://craftednba.com/players). From player bios to advanced stats, we've got it all covered! Whether you're a stats junkie, a hoops enthusiast, or just curious about the NBA, come join us as we break down the game with data. Let's hoop it up and dive into the exciting world of NBA analytics together! 🚀🏀
+Welcome to the Crafted NBA Data Pipeline project! 🏀 This is where data engineering meets the world of basketball, all thanks to the magic of Dagster and dbt. This repo takes you on a journey of how data is gotten to a user fingertips, where we scrape, transform, and load NBA player data from the [crafted NBA website](https://craftednba.com/players).
