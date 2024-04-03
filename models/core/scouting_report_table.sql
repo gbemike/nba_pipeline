@@ -24,10 +24,10 @@ scouting_report as (
         pn.player_name,
 
         -- player_bio
-        pb.height_cm,
+        pb.height,
         pb.age,
         pb.weight_lb,
-        pb.wingspan_cm,
+        pb.wingspan,
         pb.origin,
 
         -- player_roles

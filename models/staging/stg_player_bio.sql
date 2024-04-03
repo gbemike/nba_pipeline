@@ -10,11 +10,11 @@ renamed as (
         player_name,
 
         -- player info
-        {{ convert_height_to_cm('height') }} as height_cm,
+        height,
         cast(age as numeric) as age,
         cast(weight_lb as numeric) as weight_lb,
         positional_size,
-        {{ convert_height_to_cm('wingspan') }} as wingspan_cm,
+        wingspan,
         origin
 
     from source

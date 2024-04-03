@@ -1,0 +1,185 @@
+version: 2
+
+models:
+  - name: scouting_report_table
+    description: ""
+    columns:
+      - name: player_name
+        data_type: string
+        description: ""
+
+      - name: height
+        data_type: numeric
+        description: ""
+
+      - name: age
+        data_type: numeric
+        description: ""
+
+      - name: weight_lb
+        data_type: numeric
+        description: ""
+
+      - name: wingspan
+        data_type: numeric
+        description: ""
+
+      - name: origin
+        data_type: string
+        description: ""
+
+      - name: offensive_role
+        data_type: string
+        description: ""
+
+      - name: defensive_role
+        data_type: string
+        description: ""
+
+      - name: ts_value
+        data_type: numeric
+        description: ""
+
+      - name: ts_percentile
+        data_type: numeric
+        description: ""
+
+      - name: sq_value
+        data_type: numeric
+        description: ""
+
+      - name: sq_percentile
+        data_type: numeric
+        description: ""
+
+      - name: ftr_value
+        data_type: numeric
+        description: ""
+
+      - name: ftr_percentile
+        data_type: numeric
+        description: ""
+
+      - name: three_par_value
+        data_type: numeric
+        description: ""
+
+      - name: three_par_percentile
+        data_type: numeric
+        description: ""
+
+      - name: orb_value
+        data_type: numeric
+        description: ""
+
+      - name: orb_percentile
+        data_type: numeric
+        description: ""
+
+      - name: ctov_value
+        data_type: numeric
+        description: ""
+
+      - name: ctov_percentile
+        data_type: numeric
+        description: ""
+
+      - name: load_value
+        data_type: numeric
+        description: ""
+
+      - name: load_percentile
+        data_type: numeric
+        description: ""
+
+      - name: creation_value
+        data_type: numeric
+        description: ""
+
+      - name: creation_percentile
+        data_type: numeric
+        description: ""
+
+      - name: portability_value
+        data_type: numeric
+        description: ""
+
+      - name: portability_percentile
+        data_type: numeric
+        description: ""
+
+      - name: passer_rating_value
+        data_type: numeric
+        description: ""
+
+      - name: craftedopm_value
+        data_type: numeric
+        description: ""
+
+      - name: craftedopm_percentile
+        data_type: numeric
+        description: ""
+
+      - name: deflections_value
+        data_type: numeric
+        description: ""
+
+      - name: deflections_percentile
+        data_type: numeric
+        description: ""
+
+      - name: radtov_value
+        data_type: numeric
+        description: ""
+
+      - name: radtov_percentile
+        data_type: numeric
+        description: ""
+
+      - name: drb_value
+        data_type: numeric
+        description: ""
+
+      - name: drb_percentile
+        data_type: numeric
+        description: ""
+
+      - name: rim_defense_value
+        data_type: numeric
+        description: ""
+
+      - name: rim_defense_percentile
+        data_type: numeric
+        description: ""
+
+      - name: blkpct_value
+        data_type: numeric
+        description: ""
+
+      - name: blkpct_percentile
+        data_type: numeric
+        description: ""
+
+      - name: versatility_value
+        data_type: numeric
+        description: ""
+
+      - name: versatility_percentile
+        data_type: numeric
+        description: ""
+
+      - name: rpf_value
+        data_type: numeric
+        description: ""
+
+      - name: rpf_percentile
+        data_type: numeric
+        description: ""
+
+      - name: crafteddpm_value
+        data_type: numeric
+        description: ""
+
+      - name: crafteddpm_percentile
+        data_type: numeric
+        description: ""

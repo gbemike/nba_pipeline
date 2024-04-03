@@ -1,0 +1,246 @@
+version: 2
+
+sources:
+  - name: nba_data
+    tables:
+      - name: player_names
+        meta:
+          dagster:
+            asset_key: ["player_names"] # This metadata specifies the corresponding Dagster asset for this dbt source.
+      - name: player_bio
+        meta:
+          dagster:
+            asset_key: ["player_bio"]
+      - name: player_roles
+        meta:
+          dagster:
+            asset_key: ["player_roles"]
+      - name: player_stats
+        meta:
+          dagster:
+            asset_key: ["player_stats"]
+
+models:
+  - name: stg_player_names
+    description: ""
+    columns:
+      - name: player_name
+        data_type: string
+        description: "Name of player"
+        tests:
+          - not_null:
+            severity: warn
+
+  - name: stg_player_bio
+    description: ""
+    columns:
+      - name: player_name
+        data_type: string
+        description: ""
+        tests:
+          - not_null:
+            severity: warn
+
+      - name: height
+        data_type: string
+        description: "player height in feet and inches"
+
+      - name: age
+        data_type: numeric
+        description: "player age"
+
+      - name: weight_lb
+        data_type: numeric
+        description: "player weight in pounds"
+
+      - name: positional_size
+        data_type: string
+        description: "Size of player compared to other in his position"
+
+      - name: wingspan
+        data_type: string
+        description: "player wingspan in feet and inches"
+
+  - name: stg_player_roles
+    description: ""
+    columns:
+      - name: player_name
+        data_type: string
+        description: ""
+        tests:
+          - not_null:
+            severity: warn
+
+      - name: offensive_role
+        data_type: string
+        description: "players on court role when his team posses the ball"
+
+      - name: defensive_role
+        data_type: string
+        description: "players on court role when the team is defending"
+
+  - name: stg_player_stats
+    description: ""
+    columns:
+      - name: player_name
+        data_type: string
+        description: ""
+        tests:
+          - not_null:
+            severity: warn
+
+      - name: ts_value
+        data_type: numeric
+        description: "measure of shooting efficiency that takes into account field goals, 3-point field goals and free throws"
+
+      - name: ts_percentile
+        data_type: numeric
+        description: "player true shooting position compared to the rest of the league"
+
+      - name: sq_value
+        data_type: numeric
+        description: "quality of shots taken by a player graded on a 0-100 scale, which represents the likelihood of the shot making a basket"
+
+      - name: sq_percentile
+        data_type: numeric
+        description: "player shot quality position compared to the rest of the league"
+
+      - name: ftr_value
+        data_type: numeric
+        description: "this is the ratio of free throws attempted to field goals attempted, gives an insight to how frequent a player goes to the line"
+
+      - name: ftr_percentile
+        data_type: numeric
+        description: "player free throw rate position compared to the rest of the league"
+
+      - name: three_par_value
+        data_type: numeric
+        description: "how frequent a player attempts a 3 point shot, its the ratio of 3's attempted to field goals attempted"
+
+      - name: three_par_percentile
+        data_type: numeric
+        description: "player three point rate position compared to the rest of the league"
+
+      - name: orb_value
+        data_type: numeric
+        description: "offensive rebound quality"
+
+      - name: orb_percentile
+        data_type: numeric
+        description: "player offensive rebound quality compared to rest of the league"
+
+      - name: ctov_value
+        data_type: numeric
+        description: "takes into account ones offensive load in respect to the amount of times a person turns the ball over per 100 possessions"
+
+      - name: ctov_percentile
+        data_type: numeric
+        description: "creation turnover position of player compared to the rest of the league"
+
+      - name: load_value
+        data_type: numeric
+        description: "an estimate of how much a player directly contributes to an individual possession through their shooting, creating, passing, and turning the ball over"
+
+      - name: load_percentile
+        data_type: numeric
+        description: "offensive load position compared to the rest of the league"
+
+      - name: creation_value
+        data_type: numeric
+        description: "A per 100 estimate of the number of open shots created for teammates"
+
+      - name: creation_percentile
+        data_type: numeric
+        description: "creation position compared to the rest of the league"
+
+      - name: portability_value
+        data_type: numeric
+        description: "An attempt to estimate how well a player would fit with a selection of 4 random player"
+
+      - name: portability_percentile
+        data_type: numeric
+        description: "how portable a player is compared to the rest of the league"
+
+      - name: passer_rating_value
+        data_type: numeric
+        description: "an estimate of the quality of a players passing"
+
+      - name: craftedopm_value
+        data_type: numeric
+        description: "An aggregate of many different offensive plus minus metrics. First, we convert all variables to the same scale, then we combine them and divide by the number of variables. We then take this number and convert it to the MYRPM scale. "
+
+      - name: craftedopm_percentile
+        data_type: numeric
+        description: "creaftedopm position compared to the rest of the league"
+
+      - name: deflections_value
+        data_type: numeric
+        description: "deflections per 36 minutes"
+
+      - name: deflections_percentile
+        data_type: numeric
+        description: "deflections position compared to the rest of the league"
+
+      - name: radtov_value
+        data_type: numeric
+        description: "regularized adjusted defensive turnovers"
+
+      - name: radtov_percentile
+        data_type: numeric
+        description: "radtov position compared to the rest of the league"
+
+      - name: drb_value
+        data_type: numeric
+        description: "defensive rebound quality"
+
+      - name: drb_percentile
+        data_type: numeric
+        description: "drb position compared to the rest of the league"
+
+      - name: rim_defense_value
+        data_type: numeric
+        description: "the difference between the field goal percentage a player allows within 6 feet vs what those same opponents shoot within 6 feet against all other players"
+
+      - name: rim_defense_percentile
+        data_type: numeric
+        description: "player rim defense compared to the rest of the league"
+
+      - name: rim_frequency_value
+        data_type: numeric
+        description: "the percent of opponent shot attempts at the rim where this player is able to contest the shot"
+
+      - name: rim_frequency_percentile
+        data_type: numeric
+        description: "player rim frequency compared to the rest of the league"
+
+      - name: blkpct_value
+        data_type: numeric
+        description: "percentage of opponents shot attempts that a player blocks while on the court"
+
+      - name: blkpct_percentile
+        data_type: numeric
+        description: "block percentage compared to the rest of the leagie"
+
+      - name: versatility_value
+        data_type: numeric
+        description: "a measure of how versatile a player is, scaled from 0-100"
+
+      - name: versatility_percentile
+        data_type: numeric
+        description: "how versatile a player is compared to the rest of the league"
+
+      - name: rpf_value
+        data_type: numeric
+        description: "how often a player fouls"
+
+      - name: rpf_percentile
+        data_type: numeric
+        description: "how often a player fouls compared to the rest of the league"
+
+      - name: crafteddpm_value
+        data_type: numeric
+        description: "An aggregate of many different defensive plus minus metrics. First, we convert all variables to the same scale, then we combine them and divide by the number of variables. We then take this number and convert it to the MYRPM scale"
+
+      - name: crafteddpm_percentile
+        data_type: numeric
+        description: "crafteddpm compared to the rest of the league"

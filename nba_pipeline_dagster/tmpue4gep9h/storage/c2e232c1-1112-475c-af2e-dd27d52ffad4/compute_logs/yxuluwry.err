@@ -1,0 +1,99 @@
+[32m2024-04-02 23:42:47 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - c2e232c1-1112-475c-af2e-dd27d52ffad4 - 1755856 - LOGS_CAPTURED - Started capturing logs in process (pid: 1755856).
+[32m2024-04-02 23:42:47 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - c2e232c1-1112-475c-af2e-dd27d52ffad4 - 1755856 - player_stats - STEP_START - Started execution of step "player_stats".
+[32m2024-04-02 23:54:57 +0000[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - c2e232c1-1112-475c-af2e-dd27d52ffad4 - 1755856 - player_stats - STEP_FAILURE - Execution of step "player_stats" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "player_stats"::
+
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+Stack Trace:
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/utils.py", line 54, in op_execution_error_boundary
+    yield
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_utils/__init__.py", line 463, in iterate_with_context
+    next_output = next(iterator)
+                  ^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/compute_generator.py", line 131, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/compute_generator.py", line 125, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/nba_pipeline_dagster/nba_pipeline_dagster/assets.py", line 176, in player_stats
+    response = requests.get(player_url)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/requests/adapters.py", line 501, in send
+    raise ConnectionError(err, request=request)
+
+The above exception occurred during handling of the following exception:
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+Stack Trace:
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/packages/six.py", line 769, in reraise
+    raise value.with_traceback(tb)
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 715, in urlopen
+    httplib_response = self._make_request(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 467, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 462, in _make_request
+    httplib_response = conn.getresponse()
+                       ^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/anaconda3/lib/python3.11/http/client.py", line 1378, in getresponse
+    response.begin()
+  File "/home/gbemike/anaconda3/lib/python3.11/http/client.py", line 318, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/anaconda3/lib/python3.11/http/client.py", line 287, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+
+The above exception occurred during handling of the following exception:
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+Stack Trace:
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 715, in urlopen
+    httplib_response = self._make_request(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 467, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 462, in _make_request
+    httplib_response = conn.getresponse()
+                       ^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/anaconda3/lib/python3.11/http/client.py", line 1378, in getresponse
+    response.begin()
+  File "/home/gbemike/anaconda3/lib/python3.11/http/client.py", line 318, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/anaconda3/lib/python3.11/http/client.py", line 287, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+
+The above exception occurred during handling of the following exception:
+TypeError: HTTPConnection.getresponse() got an unexpected keyword argument 'buffering'
+
+Stack Trace:
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 458, in _make_request
+    httplib_response = conn.getresponse(buffering=True)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0m

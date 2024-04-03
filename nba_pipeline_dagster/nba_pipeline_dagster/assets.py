@@ -27,16 +27,20 @@ def player_names(context: AssetExecutionContext) -> pd.DataFrame:
     """
     url = "https://craftednba.com/players"
 
+    headshots = []
+
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
 
     #Find all elements with class 'name' (assuming 'name' is the class for player names)
     player_names = soup.find_all(class_='name')
+    headshots = soup.find_all(class_='headshot')
 
     #Extract player names, add hyphen, and make them lowercase
     names_list = ['-'.join(name.get_text().lower().split()) for name in player_names]
+    pictures = [headshot['src'] for headshot in headshots]
     
-    df = pd.DataFrame(names_list, columns=['player_name'])
+    df = pd.DataFrame({'player_name': names_list, 'headshots': pictures})
 
     # preprocessing
     df['player_name'] = df['player_name'].str.replace("'","")
@@ -49,18 +53,21 @@ def player_names(context: AssetExecutionContext) -> pd.DataFrame:
 
     return df
 
-@asset(compute_kind="python", deps=[player_names], io_manager_key="bigquery_io_manager")
+@asset(compute_kind="python", deps=[player_names]) #io_manager_key="bigquery_io_manager")
 def player_bio(context:AssetExecutionContext) -> pd.DataFrame:
     """
     Get Player Bio
     """
     player_names_df = pd.read_csv('data/raw/player_names.csv')
-    player_names = player_names_df['player_name'].tolist()
-    # player_names = ['austin-reaves']
+    # player_names = player_names_df['player_name'].tolist()
+    # headshots = player_names_df['headshots'].tolist()
+    player_names = ['austin-reaves']
+    headshots = [['austin-reaves']('https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1630559.png')]
+    # headshots = ['https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1630559.png']
 
     player_bio = []
 
-    for player_name in player_names:
+    for player_name, headshot in zip(player_names, headshots):
         # Construct the URL for the player
         player_url = f"https://craftednba.com/players/{player_name}"
 
@@ -70,14 +77,14 @@ def player_bio(context:AssetExecutionContext) -> pd.DataFrame:
         # Parse the HTML content of the player's page
         soup = BeautifulSoup(response.content, 'html.parser')
 
-        # Find the team section containing the desired data
-        team_section = soup.find(class_='team flex-wrap')
+        # Find the section containing player bio stats
+        bio_section = soup.find(class_='team flex-wrap')
 
         # Find all <p> tags within the team section
-        p_tags = team_section.find_all('p')
+        p_tags = bio_section.find_all('p')
 
         # Extract the labels and values from the <strong> and <span> tags within <p> tags
-        data = {'player_name':player_name}
+        data = {'player_name':player_name, 'headshots':headshot}
         for p_tag in p_tags:
             strong_tag = p_tag.find('strong')
             if strong_tag:
@@ -97,27 +104,32 @@ def player_bio(context:AssetExecutionContext) -> pd.DataFrame:
 
     df.columns = df.columns.str.replace('weight', 'weight_lb')
 
+    df['height'] = df['height'].str.replace('"', '')
+
     df.to_csv('data/raw/player_bio.csv', index=False)
 
-    return df
+    #return df
 
-@asset(compute_kind="python", deps=[player_names], io_manager_key="bigquery_io_manager")
+@asset(compute_kind="python", deps=[player_names]) #io_manager_key="bigquery_io_manager")
 def player_roles(context: AssetExecutionContext) -> pd.DataFrame:
     """
     Get players positional role
     """
     player_names_df = pd.read_csv('data/raw/player_names.csv')
-    player_names = player_names_df['player_name'].tolist()
-    # player_names = ['austin-reaves']
+    # player_names = player_names_df['player_name'].tolist()
+    # headshots = player_names_df['headshots'].tolist()
+    player_names = ['austin-reaves']
+    headshots = [['austin-reaves']('https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1630559.png')]
+
 
     player_roles = []
 
-    for player_name in player_names:
+    for player_name, headshot in zip(player_names, headshots):
         player_url = f"https://craftednba.com/players/{player_name}"
         response = requests.get(player_url)
         # Scraping player roles
-        player_role_info = {}
-        player_role_info['player name'] = player_name
+        player_role_info = {'player_name': player_name, 'headshots': headshot}
+        # player_role_info['player name'] = player_name
         soup = BeautifulSoup(response.content, 'html.parser')
         
         # finding the the div class
@@ -146,23 +158,25 @@ def player_roles(context: AssetExecutionContext) -> pd.DataFrame:
 
     return df
 
-@asset(compute_kind="python", deps=[player_names], io_manager_key="bigquery_io_manager")
+@asset(compute_kind="python", deps=[player_names],io_manager_key="bigquery_io_manager")
 def player_stats(context: AssetExecutionContext) -> pd.DataFrame:
     """
     Get players scouting report stats
     """
     player_names_df = pd.read_csv('data/raw/player_names.csv')
     player_names = player_names_df['player_name'].tolist()
+    headshots = player_names_df['headshots'].tolist()
     # player_names = ['austin-reaves']
+    # headshots = ['https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1630559.png']
 
     player_stats = []
 
-    for player_name in player_names:
+    for player_name, headshot in zip(player_names, headshots):
         player_url = f"https://craftednba.com/players/{player_name}"
         response = requests.get(player_url)
         
-        player_stat_info = {}
-        player_stat_info['player name'] = player_name
+        player_stat_info = {'player_name':player_name, 'headshots':headshot}
+        # player_stat_info['player name'] = player_name
 
         soup = BeautifulSoup(response.content, 'html.parser')
 
@@ -210,5 +224,6 @@ def player_stats(context: AssetExecutionContext) -> pd.DataFrame:
 
     df.drop(['_value', '_percentile'],inplace=True, axis=1)
 
-    df.to_csv('data/raw/player_stats.csv') 
+    df.to_csv('data/raw/player_stats.csv')
+    
     return df
