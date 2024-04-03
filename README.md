@@ -26,9 +26,9 @@ For data storage the project uses `dbt-bigquery`, which is dbt BigQuery integrat
 To set up `BigQueryPandasIOManager`, we declare it as resource in the `definition.py` file in our dagster directory:
 ```bash
 defs = Definitions(
-    assets=[nba_pipeline_dbt_assets, player_names, player_bio, player_roles, player_stats],
-    schedules=schedules,
-    jobs=jobs,
+    """
+    ........
+    """"
     resources={
         "dbt": DbtCliResource(project_dir=os.fspath(dbt_project_dir)),
         "bigquery_io_manager": BigQueryPandasIOManager(
@@ -39,6 +39,7 @@ defs = Definitions(
             timeout=15.0
         )
     },
+)
 ```
 
 
