@@ -59,10 +59,10 @@ def player_bio(context:AssetExecutionContext) -> pd.DataFrame:
     Get Player Bio
     """
     player_names_df = pd.read_csv('data/raw/player_names.csv')
-    # player_names = player_names_df['player_name'].tolist()
-    # headshots = player_names_df['headshots'].tolist()
-    player_names = ['austin-reaves']
-    headshots = [['austin-reaves']('https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1630559.png')]
+    player_names = player_names_df['player_name'].tolist()
+    headshots = player_names_df['headshots'].tolist()
+    # player_names = ['austin-reaves']
+    # headshots = [['austin-reaves']('https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1630559.png')]
     # headshots = ['https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1630559.png']
 
     player_bio = []
@@ -116,10 +116,10 @@ def player_roles(context: AssetExecutionContext) -> pd.DataFrame:
     Get players positional role
     """
     player_names_df = pd.read_csv('data/raw/player_names.csv')
-    # player_names = player_names_df['player_name'].tolist()
-    # headshots = player_names_df['headshots'].tolist()
-    player_names = ['austin-reaves']
-    headshots = [['austin-reaves']('https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1630559.png')]
+    player_names = player_names_df['player_name'].tolist()
+    headshots = player_names_df['headshots'].tolist()
+    # player_names = ['austin-reaves']
+    # headshots = [['austin-reaves']('https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1630559.png')]
 
 
     player_roles = []

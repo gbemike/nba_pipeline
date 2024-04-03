@@ -3,7 +3,7 @@ Welcome to your new dbt project!
 ### Crafted NBA Data Pipeline
 Welcome to the Crafted NBA Data Pipeline project! 🏀 This is where data engineering meets the world of basketball, all thanks to the magic of Dagster and dbt. Where we scrape, transform, and load NBA player data from the [crafted NBA website](https://craftednba.com/players).
 
-### How it works
+### Overview
 
 ## Data Scraping
 
@@ -20,7 +20,7 @@ Dagter is responsible for the execution of the python scraping modules. The asse
 
 Our Dagster assets contain python code that scrape data from the [crafted NBA website](https://craftednba.com/players) as well as our dbt models.
 We use the outputs of our assets which are csv files as the seeds for the dbt side of this project, it contain the `player_names`, `player_bio`, `player_roles` and `player_stats` csv files.
-In our `schema.yml` file at `models/core` and `models/staging`. We declare the sources of what will be our used as our seeds:
+In our `schema.yml` file at `models/core` and `models/staging`. We declare the sources, which are the replacements for a seed:
 
 ```jinja
 version: 2
@@ -49,6 +49,7 @@ sources:
 ##  Data Storage
 For data storage the project uses `dbt-bigquery`, which is dbt BigQuery integration. We as use `BigQueryPandsIOManager`. This is a Dagster BigQuery integration that helps us store a pandas dataframe into our database.
 To set up `BigQueryPandasIOManager`, we declare it as resource in the `definition.py` file in our dagster directory:
+
 ```bash
 defs = Definitions(
     """
@@ -74,4 +75,18 @@ This integration enables you to leverage dbt for further data modeling, transfor
 
 ## Data access
 
-    Data gathered by previous steps can be easily accessed in API service using public endpoints.
+Data gathered by previous steps can be easily accessed in API service using public endpoints.
+
+### How it works
+
+To run the application, enter the dagster directory:
+```bash
+cd nba_pipeline_dagster
+```
+Then run:
+```bash
+dagster dev
+```
+The command above runs the Dagster UI and from here we can run our dagster assets
+
+![Dagster Assets](images/dagster_assets_display.png)

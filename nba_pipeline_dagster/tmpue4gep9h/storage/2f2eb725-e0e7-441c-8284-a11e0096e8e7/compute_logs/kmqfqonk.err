@@ -1,7 +1,0 @@
-[32m2024-04-02 18:29:00 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 2f2eb725-e0e7-441c-8284-a11e0096e8e7 - 774763 - LOGS_CAPTURED - Started capturing logs in process (pid: 774763).
-[32m2024-04-02 18:29:00 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 2f2eb725-e0e7-441c-8284-a11e0096e8e7 - 774763 - player_roles - STEP_START - Started execution of step "player_roles".
-[32m2024-04-02 18:29:02 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 2f2eb725-e0e7-441c-8284-a11e0096e8e7 - 774763 - player_roles - STEP_OUTPUT - Yielded output "result" of type "DataFrame". (Type check passed).
-[32m2024-04-02 18:29:02 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 2f2eb725-e0e7-441c-8284-a11e0096e8e7 - player_roles - Writing file at: /home/gbemike/Documents/github/nba_pipeline/nba_pipeline_dagster/tmpue4gep9h/storage/player_roles using PickledObjectFilesystemIOManager...
-[32m2024-04-02 18:29:02 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 2f2eb725-e0e7-441c-8284-a11e0096e8e7 - 774763 - player_roles - ASSET_MATERIALIZATION - Materialized value player_roles.
-[32m2024-04-02 18:29:02 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 2f2eb725-e0e7-441c-8284-a11e0096e8e7 - 774763 - player_roles - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
-[32m2024-04-02 18:29:02 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 2f2eb725-e0e7-441c-8284-a11e0096e8e7 - 774763 - player_roles - STEP_SUCCESS - Finished execution of step "player_roles" in 1.76s.

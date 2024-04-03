@@ -8,6 +8,7 @@ renamed as (
     select
         -- identifiers
         player_name,
+        headshots,
 
         -- player roles
         offensive_role,

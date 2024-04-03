@@ -7,6 +7,7 @@ with source as (
 renamed as (
     select
         player_name,
+        headshots,
 
         -- stats
         {{ string_to_float('ts_value') }} as ts_percentage,

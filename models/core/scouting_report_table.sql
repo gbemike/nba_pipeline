@@ -22,6 +22,7 @@ scouting_report as (
     select
         -- player names
         pn.player_name,
+        pn.headshots,
 
         -- player_bio
         pb.height,
