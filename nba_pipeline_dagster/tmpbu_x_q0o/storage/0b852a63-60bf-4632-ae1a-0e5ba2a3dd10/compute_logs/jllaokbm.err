@@ -1,0 +1,17 @@
+[32m2024-04-03 19:54:56 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 0b852a63-60bf-4632-ae1a-0e5ba2a3dd10 - 808974 - LOGS_CAPTURED - Started capturing logs in process (pid: 808974).
+[32m2024-04-03 19:54:56 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 0b852a63-60bf-4632-ae1a-0e5ba2a3dd10 - 808974 - player_bio - STEP_START - Started execution of step "player_bio".
+[32m2024-04-03 20:14:58 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 0b852a63-60bf-4632-ae1a-0e5ba2a3dd10 - 808974 - player_bio - STEP_OUTPUT - Yielded output "result" of type "DataFrame". Warning! Type check failed.
+[32m2024-04-03 20:14:58 +0000[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - 0b852a63-60bf-4632-ae1a-0e5ba2a3dd10 - 808974 - player_bio - STEP_FAILURE - Execution of step "player_bio" failed.
+
+dagster._core.errors.DagsterTypeCheckDidNotPass: Type check failed for step output "result" - expected type "DataFrame". Description: Value of type <class 'NoneType'> failed type check for Dagster type DataFrame, expected value to be of Python type pandas.core.frame.DataFrame.
+
+Stack Trace:
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/execute_plan.py", line 286, in dagster_event_sequence_for_step
+    for step_event in check.generator(step_events):
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/execute_step.py", line 536, in core_dagster_event_sequence_for_step
+    for evt in _type_check_and_store_output(step_context, user_event):
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/execute_step.py", line 584, in _type_check_and_store_output
+    for output_event in _type_check_output(step_context, step_output_handle, output, version):
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/execute_step.py", line 456, in _type_check_output
+    raise DagsterTypeCheckDidNotPass(
+[0m

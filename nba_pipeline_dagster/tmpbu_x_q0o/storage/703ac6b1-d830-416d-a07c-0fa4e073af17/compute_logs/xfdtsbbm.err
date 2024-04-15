@@ -1,0 +1,7 @@
+[32m2024-04-03 20:16:20 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 703ac6b1-d830-416d-a07c-0fa4e073af17 - 884835 - LOGS_CAPTURED - Started capturing logs in process (pid: 884835).
+[32m2024-04-03 20:16:20 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 703ac6b1-d830-416d-a07c-0fa4e073af17 - 884835 - player_bio - STEP_START - Started execution of step "player_bio".
+[32m2024-04-03 20:30:38 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 703ac6b1-d830-416d-a07c-0fa4e073af17 - 884835 - player_bio - STEP_OUTPUT - Yielded output "result" of type "DataFrame". (Type check passed).
+[32m2024-04-03 20:30:38 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 703ac6b1-d830-416d-a07c-0fa4e073af17 - player_bio - Writing file at: /home/gbemike/Documents/github/nba_pipeline/nba_pipeline_dagster/tmpbu_x_q0o/storage/player_bio using PickledObjectFilesystemIOManager...
+[32m2024-04-03 20:30:38 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 703ac6b1-d830-416d-a07c-0fa4e073af17 - 884835 - player_bio - ASSET_MATERIALIZATION - Materialized value player_bio.
+[32m2024-04-03 20:30:38 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 703ac6b1-d830-416d-a07c-0fa4e073af17 - 884835 - player_bio - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2024-04-03 20:30:38 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 703ac6b1-d830-416d-a07c-0fa4e073af17 - 884835 - player_bio - STEP_SUCCESS - Finished execution of step "player_bio" in 14m18s.

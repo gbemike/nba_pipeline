@@ -28,6 +28,7 @@ scouting_report as (
         pb.height,
         pb.age,
         pb.weight_lb,
+        pb.positional_size,
         pb.wingspan,
         pb.origin,
 

@@ -53,7 +53,7 @@ def player_names(context: AssetExecutionContext) -> pd.DataFrame:
 
     return df
 
-@asset(compute_kind="python", deps=[player_names]) #io_manager_key="bigquery_io_manager")
+@asset(compute_kind="python", deps=[player_names], io_manager_key="bigquery_io_manager")
 def player_bio(context:AssetExecutionContext) -> pd.DataFrame:
     """
     Get Player Bio
@@ -108,9 +108,9 @@ def player_bio(context:AssetExecutionContext) -> pd.DataFrame:
 
     df.to_csv('data/raw/player_bio.csv', index=False)
 
-    #return df
+    return df
 
-@asset(compute_kind="python", deps=[player_names]) #io_manager_key="bigquery_io_manager")
+@asset(compute_kind="python", deps=[player_names], io_manager_key="bigquery_io_manager")
 def player_roles(context: AssetExecutionContext) -> pd.DataFrame:
     """
     Get players positional role

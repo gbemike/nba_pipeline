@@ -22,24 +22,35 @@ sources:
 
 models:
   - name: stg_player_names
-    description: ""
+    description: "data on player name"
     columns:
       - name: player_name
         data_type: string
         description: "Name of player"
         tests:
-          - not_null:
-            severity: warn
+          - not_null 
+
+      - name: headshots
+        data_type: string
+        description: "headshot of a player"
+        tests:
+          - not_null
+
 
   - name: stg_player_bio
-    description: ""
+    description: "player bio data"
     columns:
       - name: player_name
         data_type: string
         description: ""
         tests:
-          - not_null:
-            severity: warn
+          - not_null
+
+      - name: headshots
+        data_type: string
+        description: "headshot of a player"
+        tests:
+          - not_null
 
       - name: height
         data_type: string
@@ -62,14 +73,17 @@ models:
         description: "player wingspan in feet and inches"
 
   - name: stg_player_roles
-    description: ""
+    description: "player on court roles on defense and offense"
     columns:
       - name: player_name
         data_type: string
         description: ""
         tests:
-          - not_null:
-            severity: warn
+          - not_null
+
+      - name: headshots
+        data_type: string
+        description: "headshot of a player"
 
       - name: offensive_role
         data_type: string
@@ -80,14 +94,19 @@ models:
         description: "players on court role when the team is defending"
 
   - name: stg_player_stats
-    description: ""
+    description: "player advanced stats"
     columns:
       - name: player_name
         data_type: string
         description: ""
         tests:
-          - not_null:
-            severity: warn
+          - not_null
+
+      - name: headshots
+        data_type: string
+        description: "headshot of a player"
+        tests:
+          - not_null
 
       - name: ts_value
         data_type: numeric

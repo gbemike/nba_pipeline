@@ -1,0 +1,8 @@
+Running with dbt=1.7.10
+Registered adapter: bigquery=1.7.6
+Unable to do partial parsing because profile has changed
+Encountered an error:
+Parsing Error
+  Invalid test config given in models/staging/schema.yml:
+  	test definition dictionary must have exactly one key, got [('not_null', None), ('severity', 'warn')] instead (2 keys)
+  	@: UnparsedModelUpdate(original_file_path='mode...ne)

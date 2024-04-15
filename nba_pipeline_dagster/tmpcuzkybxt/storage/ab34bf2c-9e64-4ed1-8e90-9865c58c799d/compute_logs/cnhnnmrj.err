@@ -1,0 +1,40 @@
+[32m2024-04-12 23:47:57 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - ab34bf2c-9e64-4ed1-8e90-9865c58c799d - 1136140 - LOGS_CAPTURED - Started capturing logs in process (pid: 1136140).
+[32m2024-04-12 23:47:57 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - ab34bf2c-9e64-4ed1-8e90-9865c58c799d - 1136140 - nba_pipeline_dbt_assets - STEP_START - Started execution of step "nba_pipeline_dbt_assets".
+[32m2024-04-12 23:47:57 +0000[0m - dagster - [34mINFO[0m - __ASSET_JOB - ab34bf2c-9e64-4ed1-8e90-9865c58c799d - nba_pipeline_dbt_assets - A dbt subsetted execution is being performed. Overriding default dbt selection arguments `['--select', 'fqn:*']` with arguments: `['--select', 'fqn:nba_pipeline.core.scouting_report_table']`
+[32m2024-04-12 23:47:57 +0000[0m - dagster - [34mINFO[0m - __ASSET_JOB - ab34bf2c-9e64-4ed1-8e90-9865c58c799d - nba_pipeline_dbt_assets - Copying `/home/gbemike/Documents/github/nba_pipeline/target/partial_parse.msgpack` to `/home/gbemike/Documents/github/nba_pipeline/target/nba_pipeline_dbt_assets-ab34bf2-445f596/partial_parse.msgpack` to take advantage of partial parsing.
+[32m2024-04-12 23:47:57 +0000[0m - dagster - [34mINFO[0m - __ASSET_JOB - ab34bf2c-9e64-4ed1-8e90-9865c58c799d - nba_pipeline_dbt_assets - Running dbt command: `dbt build --select fqn:nba_pipeline.core.scouting_report_table`.
+[32m2024-04-12 23:57:51 +0000[0m - dagster - [34mINFO[0m - __ASSET_JOB - ab34bf2c-9e64-4ed1-8e90-9865c58c799d - nba_pipeline_dbt_assets - Finished dbt command: `dbt build --select fqn:nba_pipeline.core.scouting_report_table`.
+[32m2024-04-12 23:57:51 +0000[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - ab34bf2c-9e64-4ed1-8e90-9865c58c799d - 1136140 - nba_pipeline_dbt_assets - STEP_FAILURE - Execution of step "nba_pipeline_dbt_assets" failed.
+
+dagster_dbt.errors.DagsterDbtCliRuntimeError: The dbt CLI process with command `dbt build --select fqn:nba_pipeline.core.scouting_report_table` failed with exit code 2. Check the stdout in the Dagster compute logs for the full information about the error, or view the dbt debug log: /home/gbemike/Documents/github/nba_pipeline/target/nba_pipeline_dbt_assets-ab34bf2-445f596/dbt.log.
+
+Errors parsed from dbt logs:
+Encountered an error:
+Runtime Error
+  Timeout of 600.0s exceeded, last exception: HTTPSConnectionPool(host='oauth2.googleapis.com', port=443): Max retries exceeded with url: /token (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f4189031310>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+
+Stack Trace:
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/execute_plan.py", line 286, in dagster_event_sequence_for_step
+    for step_event in check.generator(step_events):
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/execute_step.py", line 529, in core_dagster_event_sequence_for_step
+    for user_event in _step_output_error_checked_user_event_sequence(
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/execute_step.py", line 202, in _step_output_error_checked_user_event_sequence
+    for user_event in user_event_sequence:
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/execute_step.py", line 100, in _process_asset_results_to_events
+    for user_event in user_event_sequence:
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/compute.py", line 214, in execute_core_compute
+    for step_output in _yield_compute_results(step_context, inputs, compute_fn, compute_context):
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/compute.py", line 183, in _yield_compute_results
+    for event in iterate_with_context(
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_utils/__init__.py", line 463, in iterate_with_context
+    next_output = next(iterator)
+                  ^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/nba_pipeline_dagster/nba_pipeline_dagster/assets.py", line 21, in nba_pipeline_dbt_assets
+    yield from dbt.cli(["build"], context=context).stream()
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster_dbt/core/resources_v2.py", line 452, in stream
+    for event in self.stream_raw_events():
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster_dbt/core/resources_v2.py", line 515, in stream_raw_events
+    self._raise_on_error()
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster_dbt/core/resources_v2.py", line 601, in _raise_on_error
+    raise DagsterDbtCliRuntimeError(
+[0m

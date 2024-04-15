@@ -1,0 +1,12 @@
+Running with dbt=1.7.10
+Registered adapter: bigquery=1.7.6
+[[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.nba_pipeline.example
+Found 5 models, 7 tests, 4 sources, 0 exposures, 0 metrics, 592 macros, 0 groups, 0 semantic models
+
+
+Finished running  in 0 hours 9 minutes and 49.94 seconds (589.94s).
+Encountered an error:
+Runtime Error
+  Timeout of 600.0s exceeded, last exception: HTTPSConnectionPool(host='oauth2.googleapis.com', port=443): Max retries exceeded with url: /token (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f4189031310>: Failed to establish a new connection: [Errno -2] Name or service not known'))

@@ -1,0 +1,25 @@
+Running with dbt=1.7.10
+Registered adapter: bigquery=1.7.6
+[[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.nba_pipeline.example
+Found 5 models, 7 tests, 4 sources, 0 exposures, 0 metrics, 592 macros, 0 groups, 0 semantic models
+
+Concurrency: 4 threads (target='dev')
+
+1 of 2 START sql view model nba_data.stg_player_roles .......................... [RUN]
+1 of 2 ERROR creating sql view model nba_data.stg_player_roles ................. [[31mERROR[0m in 1.91s]
+2 of 2 SKIP test not_null_stg_player_roles_player_name ......................... [[33mSKIP[0m]
+
+Finished running 1 view model, 1 test in 0 hours 0 minutes and 5.70 seconds (5.70s).
+
+[31mCompleted with 1 error and 0 warnings:[0m
+
+  Runtime Error in model stg_player_roles (models/staging/stg_player_roles.sql)
+  404 Not found: Table dezoomcamp-411023:nba_data.player_roles was not found in location US; reason: notFound, message: Not found: Table dezoomcamp-411023:nba_data.player_roles was not found in location US
+  
+  Location: US
+  Job ID: 383b05f7-f392-4729-826e-c3d3062224a5
+  
+
+Done. PASS=0 WARN=0 ERROR=1 SKIP=1 TOTAL=2

@@ -1,0 +1,15 @@
+Running with dbt=1.7.10
+Registered adapter: bigquery=1.7.6
+Unable to do partial parsing because profile has changed
+[[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.nba_pipeline.example
+Found 5 models, 4 tests, 4 sources, 0 exposures, 0 metrics, 592 macros, 0 groups, 0 semantic models
+
+Concurrency: 4 threads (target='dev')
+
+1 of 2 START sql view model nba_data.stg_player_names .......................... [RUN]
+1 of 2 OK created sql view model nba_data.stg_player_names ..................... [[32mCREATE VIEW (0 processed)[0m in 2.38s]
+2 of 2 START test not_null_stg_player_names_player_name ........................ [RUN]
+2 of 2 PASS not_null_stg_player_names_player_name .............................. [[32mPASS[0m in 3.08s]
+{"data": {"node_info": {"materialized": "test", "meta": {}, "node_finished_at": "2024-04-03T20:49:24.166745", "node_name": "not_null_stg_player_names_player_name", "node_path": "not_null_stg_player_names_player_name.sql", "node_relation": {"alias": "not_null_stg_player_names_player_name", "database": "dezoomcamp-411023", "relation_name": "", "schema": "nba_data_dbt_test__audit"}, "node_started_at": "2024-04-03T20:49:21.088969", "node_status": "pass", "resource_type": "test", "unique_id": "test.nba_pipeline.not_null_stg_player_names_player_name.bdc8d14793"}, "run_result": {"adapter_response": {"_message": "SELECT (1.0 rows, 6.9 KiB processed)", "bytes_billed": 10485760.0, "bytes_processed": 7103.0, "code": "SELECT", "job_id": "d7b040ac-3a4e-44a8-a675-99b9046b30b2", "location": "US", "project_id": "dezoomcamp-411023", "rows_affected": 1.0, "slot_ms": 364.0}, "execution_time": 3.076928, "message": "", "num_failures": 0, "status": "pass", "thread": "Thread-3 (worker)", "timing_info": [{"completed_at": "2024-04-03T20:49:21.100566Z", "name": "compile", "started_at": "2024-04-03T20:49:21.090777Z"}, {"completed_at": "2024-04-03T20:49:24.165281Z", "name": "execute", "started_at": "2024-04-03T20:49:21.102056Z"}]}}, "info": {"category": "", "code": "Q025", "extra": {}, "invocation_id": "d43d901f-c926-4895-b890-5f1fd78903b6", "level": "debug", "msg": "Finished running node test.nba_pipeline.not_null_stg_player_names_player_name.bdc8d14793", "name": "NodeFinished", "pid": 1002669, "thread": "Thread-3 (worker)", "ts": "2024-04-03T20:49:24.168017Z"}}

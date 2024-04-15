@@ -1,0 +1,21 @@
+Running with dbt=1.7.10
+Registered adapter: bigquery=1.7.6
+[[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.nba_pipeline.example
+Found 5 models, 7 tests, 4 sources, 0 exposures, 0 metrics, 592 macros, 0 groups, 0 semantic models
+
+Concurrency: 4 threads (target='dev')
+
+1 of 3 START sql view model nba_data.stg_player_stats .......................... [RUN]
+1 of 3 OK created sql view model nba_data.stg_player_stats ..................... [[32mCREATE VIEW (0 processed)[0m in 4.86s]
+2 of 3 START test not_null_stg_player_stats_headshots .......................... [RUN]
+3 of 3 START test not_null_stg_player_stats_player_name ........................ [RUN]
+3 of 3 PASS not_null_stg_player_stats_player_name .............................. [[32mPASS[0m in 8.94s]
+2 of 3 PASS not_null_stg_player_stats_headshots ................................ [[32mPASS[0m in 8.95s]
+
+Finished running 1 view model, 2 tests in 0 hours 0 minutes and 24.00 seconds (24.00s).
+
+[32mCompleted successfully[0m
+
+Done. PASS=3 WARN=0 ERROR=0 SKIP=0 TOTAL=3

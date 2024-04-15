@@ -10,13 +10,13 @@ renamed as (
         headshots,
 
         -- stats
-        {{ string_to_float('ts_value') }} as ts_percentage,
+        {{ string_to_float('ts_value') }} as ts_value,
         SAFE_CAST(ts_percentile as decimal) as ts_percentile,
         SAFE_CAST(sq_value as decimal) as sq_value,
         SAFE_CAST(sq_percentile as decimal) as sq_percentile,
-        {{ string_to_float('ftr_value') }} as ftr_percentage,
+        {{ string_to_float('ftr_value') }} as ftr_value,
         SAFE_CAST(ftr_percentile as decimal) as ftr_percentile,
-        {{ string_to_float('three_par_value') }} as three_par_percentage,
+        {{ string_to_float('three_par_value') }} as three_par_value,
         SAFE_CAST(three_par_percentile as decimal) as three_par_percentile,
         SAFE_CAST(orb_value as decimal) as orb_value,
         SAFE_CAST(orb_percentile as decimal) as orb_percentile,

@@ -86,3 +86,7 @@ dagster dev
 The command above runs the Dagster UI and from here we can run our dagster assets
 
 ![Dagster Assets](images/dagster_assets_display.png)
+
+### Dashboard
+From the Data the following dashboard was created:
+![Crafted NBA Dashboard](images/tableau_dashboard.png)

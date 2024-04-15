@@ -1,0 +1,86 @@
+[32m2024-04-15 19:36:00 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 71f7f19f-ff10-4506-a324-9183e5e4324e - 497024 - LOGS_CAPTURED - Started capturing logs in process (pid: 497024).
+[32m2024-04-15 19:36:00 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 71f7f19f-ff10-4506-a324-9183e5e4324e - 497024 - player_bio - STEP_START - Started execution of step "player_bio".
+[32m2024-04-15 20:12:59 +0000[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - 71f7f19f-ff10-4506-a324-9183e5e4324e - 497024 - player_bio - STEP_FAILURE - Execution of step "player_bio" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "player_bio"::
+
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='craftednba.com', port=443): Read timed out. (read timeout=None)
+
+Stack Trace:
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/utils.py", line 54, in op_execution_error_boundary
+    yield
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_utils/__init__.py", line 463, in iterate_with_context
+    next_output = next(iterator)
+                  ^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/compute_generator.py", line 131, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/dagster/_core/execution/plan/compute_generator.py", line 125, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/nba_pipeline_dagster/nba_pipeline_dagster/assets.py", line 75, in player_bio
+    response = requests.get(player_url)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/requests/adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+
+The above exception occurred during handling of the following exception:
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='craftednba.com', port=443): Read timed out. (read timeout=None)
+
+Stack Trace:
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/packages/six.py", line 770, in reraise
+    raise value
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 715, in urlopen
+    httplib_response = self._make_request(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 407, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=conn.timeout)
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 358, in _raise_timeout
+    raise ReadTimeoutError(
+
+The above exception occurred during handling of the following exception:
+TimeoutError: [Errno 110] Connection timed out
+
+Stack Trace:
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 404, in _make_request
+    self._validate_conn(conn)
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1058, in _validate_conn
+    conn.connect()
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/connection.py", line 419, in connect
+    self.sock = ssl_wrap_socket(
+                ^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/util/ssl_.py", line 449, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/Documents/github/nba_pipeline/.venv/lib/python3.11/site-packages/urllib3/util/ssl_.py", line 493, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/anaconda3/lib/python3.11/ssl.py", line 517, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gbemike/anaconda3/lib/python3.11/ssl.py", line 1108, in _create
+    self.do_handshake()
+  File "/home/gbemike/anaconda3/lib/python3.11/ssl.py", line 1379, in do_handshake
+    self._sslobj.do_handshake()
+[0m

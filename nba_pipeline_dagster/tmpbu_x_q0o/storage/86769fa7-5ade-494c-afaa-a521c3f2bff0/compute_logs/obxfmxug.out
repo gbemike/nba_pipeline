@@ -1,0 +1,15 @@
+Running with dbt=1.7.10
+Registered adapter: bigquery=1.7.6
+Unable to do partial parsing because profile has changed
+[[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.nba_pipeline.example
+Found 5 models, 8 tests, 4 sources, 0 exposures, 0 metrics, 592 macros, 0 groups, 0 semantic models
+
+Concurrency: 4 threads (target='dev')
+
+1 of 3 START sql view model nba_data.stg_player_roles .......................... [RUN]
+1 of 3 ERROR creating sql view model nba_data.stg_player_roles ................. [[31mERROR[0m in 2.80s]
+2 of 3 SKIP test not_null_stg_player_roles_headshots ........................... [[33mSKIP[0m]
+3 of 3 SKIP test not_null_stg_player_roles_player_name ......................... [[33mSKIP[0m]
+{"data": {"node_info": {"materialized": "test", "meta": {}, "node_finished_at": "", "node_name": "not_null_stg_player_roles_headshots", "node_path": "not_null_stg_player_roles_headshots.sql", "node_relation": {"alias": "not_null_stg_player_roles_headshots", "database": "dezoomcamp-411023", "relation_name": "", "schema": "nba_data_dbt_test__audit"}, "node_started_at": "2024-04-03T20:59:16.455420", "node_status": "skipped", "resource_type": "test", "unique_id": "test.nba_pipeline.not_null_stg_player_roles_headshots.fd174a55e1"}, "run_result": {"adapter_response": {}, "execution_time": 0.0, "message": "", "num_failures": 0, "status": "skipped", "thread": "Thread-3 (worker)", "timing_info": []}}, "info": {"category": "", "code": "Q025", "extra": {}, "invocation_id": "a0570fcd-4259-4f24-8672-a16c97e75ad6", "level": "debug", "msg": "Finished running node test.nba_pipeline.not_null_stg_player_roles_headshots.fd174a55e1", "name": "NodeFinished", "pid": 1040002, "thread": "Thread-3 (worker)", "ts": "2024-04-03T20:59:16.457715Z"}}
