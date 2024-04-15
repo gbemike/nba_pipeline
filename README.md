@@ -89,4 +89,5 @@ The command above runs the Dagster UI and from here we can run our dagster asset
 
 ### Dashboard
 From the Data the following dashboard was created:
+
 ![Crafted NBA Dashboard](images/tableau_dashboard.png)
