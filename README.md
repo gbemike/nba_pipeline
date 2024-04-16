@@ -69,7 +69,7 @@ defs = Definitions(
 ```
 
 
-4. Integration with dbt:
+## Integration with dbt:
 The nba_pipeline_dbt_assets function integrates the data pipeline with dbt (data build tool), allowing you to execute dbt commands within the context of your Dagster pipeline.
 This integration enables you to leverage dbt for further data modeling, transformation, and analysis tasks, building on top of the raw data scraped and prepared by your Dagster assets.
 
