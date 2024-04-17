@@ -4,6 +4,7 @@ Welcome to your new dbt project!
 Welcome to the Crafted NBA Data Pipeline project! 🏀 This is where data engineering meets the world of basketball, all thanks to the magic of Dagster and dbt. Where we scrape, transform, and load NBA player data from the [crafted NBA website](https://craftednba.com/players).
 
 ### Overview
+The project involves scraping player data from the crafted nba website. The goal of the project is to create a pipeline using Dagster that scrapes data from the craftednba site using beautiful soup, transforms the data using dbt, specifically Dagsters dbt integration and using Dagsters BigQuery integration we send our data to Big Query then connect the database to tableau and build a dashboard. 
 
 ## Data Scraping
 
@@ -67,7 +68,6 @@ defs = Definitions(
     },
 )
 ```
-
 
 ## Integration with dbt
 The nba_pipeline_dbt_assets function integrates the data pipeline with dbt (data build tool), allowing you to execute dbt commands within the context of your Dagster pipeline.
