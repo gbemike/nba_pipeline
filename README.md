@@ -18,33 +18,11 @@ Dagter is responsible for the execution of the python scraping modules. The asse
 ## Data Transformation
 
 Our Dagster assets contain python code that scrape data from the [crafted NBA website](https://craftednba.com/players) as well as our dbt models.
-We use the outputs of our assets which are csv files as the seeds for the dbt side of this project, it contain the `player_names`, `player_bio`, `player_roles` and `player_stats` csv files.
-In our `schema.yml` file at `models/core` and `models/staging`. We declare the sources, which are the replacements for a seed:
+We use the outputs of our assets which are csv files as the seeds for the dbt side of this project, it contains the `player_names`, `player_bio`, `player_roles` and `player_stats` csv files.
+In our `schema.yml` file at `models/core` and `models/staging`, we declare the sources, which are the replacements for a seed
 
-```jinja
-version: 2
-
-sources:
-  - name: nba_data
-    tables:
-      - name: player_names
-        meta:
-          dagster:
-            asset_key: ["player_names"] # This metadata specifies the corresponding Dagster asset for this dbt source.
-      - name: player_bio
-        meta:
-          dagster:
-            asset_key: ["player_bio"]
-      - name: player_roles
-        meta:
-          dagster:
-            asset_key: ["player_roles"]
-      - name: player_stats
-        meta:
-          dagster:
-            asset_key: ["player_stats"]
-```
-
+Our models contain transformations made on the our the raw file collected from scraping. They are split into two models `staging` and `core`. The `staging` directory contains the `player_names`, `player_bio`, `player_roles` and `player_stats` assets. These assets are still raw, unclean and need a few transformations. We cast data type to their appropriate types and call our needed macros to its needed attributes 
+ 
 ##  Data Storage
 For data storage the project uses `dbt-bigquery`, which is dbt BigQuery integration. We as use `BigQueryPandsIOManager`. This is a Dagster BigQuery integration that helps us store a pandas dataframe into our database.
 To set up `BigQueryPandasIOManager`, we declare it as resource in the `definition.py` file in our dagster directory:

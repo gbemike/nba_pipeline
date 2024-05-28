@@ -4,7 +4,7 @@
 
 {% macro string_to_float(numbers) -%}
 
--- Convert height from feet-inches to centimeters
+-- Convert string values with percentage to decimals
 
     ROUND(SAFE_CAST(SPLIT({{ numbers }}, "%")[OFFSET(0)] as decimal))
 
