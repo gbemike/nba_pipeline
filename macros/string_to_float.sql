@@ -4,7 +4,7 @@
 
 {% macro string_to_float(numbers) -%}
 
--- Convert string values with percentage to decimals
+-- Convert string values with percentage to floats
 
     ROUND(SAFE_CAST(SPLIT({{ numbers }}, "%")[OFFSET(0)] as decimal))
 
