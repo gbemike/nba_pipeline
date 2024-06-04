@@ -12,15 +12,3 @@ nba_pipeline:
       threads: 2
       type: bigquery
   target: dev
-taxi_data_nyc:
-  outputs:
-    dev:
-      dbname: taxi_data
-      host: localhost
-      pass: root
-      port: 5432
-      schema: dbt_gbemike
-      threads: 4
-      type: postgres
-      user: postgres
-  target: dev
