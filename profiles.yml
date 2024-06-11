@@ -4,11 +4,11 @@ nba_pipeline:
       dataset: nba_data
       job_execution_timeout_seconds: 300
       job_retries: 1
-      keyfile: /home/gbemike/Documents/nba_pipeline/gcp_key.json
+      keyfile: service_key_file_path
       location: US
       method: service-account
       priority: interactive
-      project: dezoomcamp-411023
+      project: your_project_id
       threads: 2
       type: bigquery
   target: dev
